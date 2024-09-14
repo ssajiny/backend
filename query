@@ -1,0 +1,16 @@
+CREATE TABLE `users` (
+  `sq` INT(11) NOT NULL AUTO_INCREMENT,    -- 자동 증가하는 정수형 ID
+  `id` VARCHAR(80) NOT NULL,               -- 사용자 ID를 저장하는 문자열형
+  `password` VARCHAR(255) NOT NULL,        -- 비밀번호를 저장하는 문자열형
+  `name` VARCHAR(100) NOT NULL,            -- 사용자 이름을 저장하는 문자열형
+  `email` VARCHAR(255) NOT NULL UNIQUE,    -- 이메일 주소를 저장하는 문자열형 (유니크 제약조건)
+  `phone` VARCHAR(20),                     -- 전화번호를 저장하는 문자열형 (옵션, NULL 허용)
+  `create_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 레코드 생성 시간을 저장 (기본값: 현재 시간)
+  PRIMARY KEY (`sq`),                      -- 기본 키로 `sq` 설정
+  UNIQUE KEY (`id`),                       -- `id` 필드에 유니크 제약조건 추가
+  UNIQUE KEY (`phone`)                     -- `phone` 필드에 유니크 제약조건 추가
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+INSERT INTO `users` (`id`, `password`, `email`, `name`, `phone`)
+VALUES ('1', '1', '1@1.com', '1', '123');
